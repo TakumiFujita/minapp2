@@ -1,0 +1,5 @@
+<%= form_with model: @posts do |f| %>
+<%= f.text_field :title, :placeholder => "タイトル" %>
+<%= f.text_field :body, :placeholder => "テキスト" %>
+<%= f.submit %>
+<% end %>
