@@ -1,6 +1,8 @@
 <P class="text-title"><%= @posts.title %></P>
 <P class="text-body"><%= @posts.body %></P>
 
+
+
 <h6>コメント一覧</h6>
 <% if @comments %>
   <% @comments.each do |comment| %>
@@ -13,22 +15,4 @@
   <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
   <input type="submit" value="SENT">
   <% end %>
-
-<h1>投稿詳細ページ</h1>
-<h3><%= @posts.user.email %></h3>
-<h3>いいね件数: <%= @posts.likes.count %></h3>
-
-  <%= button_to 'いいねを取り消す', post_like_path(@posts), method: :delete %>
-<% else %>
-  <%= form_for [@posts, @like] do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :post_id, :value => @posts.id %>
-    <%= f.submit 'いいね！' %>
-  <% end %>
 <% end %>
-<h2>いいねしたユーザー</h2>
-<% @posts.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-
-<%= link_to "ホームへ戻る", posts_path %>

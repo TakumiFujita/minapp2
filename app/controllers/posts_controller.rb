@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   def show
     @posts = Post.find(params[:id])
     @comments = @posts.comments.includes(:user)
-    @like = Like.new
     end
 
 
